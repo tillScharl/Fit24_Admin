@@ -1,0 +1,70 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1>Registrierung</h1>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div class="form-group row">
+          <label for="email" class="col-xs-2 col-form-label">Benutzername</label>
+          <div class="col-xs-10">
+            <input class="form-control" type="email" [value]="email" (input)="email = $event.target.value" id="email">
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="form-group row">
+          <label for="first-name" class="col-xs-2 col-form-label">Vorname</label>
+          <div class="col-xs-10">
+            <input class="form-control" type="text" [value]="firstName" (input)="firstName = $event.target.value" id="first-name">
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="form-group row">
+          <label for="last-name" class="col-xs-2 col-form-label">Nachname</label>
+          <div class="col-xs-10">
+            <input class="form-control" type="text" [value]="lastName" (input)="lastName = $event.target.value" id="last-name">
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="form-group row">
+          <label for="newPassword" class="col-xs-2 col-form-label">Passwort</label>
+          <div class="col-xs-10">
+            <input class="form-control" type="password" [value]="signUpPassword" (input)="signUpPassword = $event.target.value" id="signUpPassword">
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="form-group row">
+          <label for="confirmPassword" class="col-xs-2 col-form-label">Passwort bestätigen</label>
+          <div class="col-xs-10">
+            <input class="form-control" type="password" [value]="confirmPassword" (input)="confirmPassword = $event.target.value" id="confirmPassword">
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <button type="button" class="btn btn-primary" (click)="signUp()">Registrieren</button>
+      </li>
+    </ul>
+
+    <h2>Social Sign In</h2>
+    <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-primary" (click)="socialSignin('facebook')">Facebook</button>
+      <button type="button" class="btn btn-secondary" (click)="socialSignin('github')">GitHub</button>
+      <button type="button" class="btn btn-info" (click)="socialSignin('google')">Google</button>
+    </div>
+
+    <h2>Social Sign Up</h2>
+    <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-primary" (click)="socialSignup('facebook')">Facebook</button>
+      <button type="button" class="btn btn-secondary" (click)="socialSignup('github')">GitHub</button>
+      <button type="button" class="btn btn-info" (click)="socialSignup('google')">Google</button>
+    </div>
+
+    <h3>In App Social</h3>
+    <div class="button-bar">
+      <button type="button" class="btn btn-primary" (click)="inAppSocial('facebook')">Facebook</button>
+    </div>
+
+  </div>
+</div>

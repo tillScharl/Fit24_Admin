@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1>CRUD</h1>
+
+    <ul class="list-group">
+      <li class="list-group-item">
+        ADD TODO:
+      </li>
+      <li class="list-group-item">
+        <div class="form-group row">
+          <label for="name" class="col-xs-2 col-form-label">Name</label>
+          <div class="col-xs-10">
+            <input class="form-control" type="text" [value]="name" (input)="name = $event.target.value" id="name">
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="form-group row">
+          <label for="description" class="col-xs-2 col-form-label">Description</label>
+          <div class="col-xs-10">
+            <input class="form-control" type="text" [value]="description" (input)="description = $event.target.value" id="description">
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <button type="button" class="btn btn-warning" (click)="postItem()">Post Item</button>
+      </li>
+    </ul>
+
+    <hr/>
+
+    <p><button type="button" class="btn btn-warning" (click)="getItems()">Get Items</button></p>
+
+
+    <form class="form-inline">
+      <div class="form-group">
+        <label for="search-input">Search</label>
+        <input type="text" class="form-control" id="search-input" placeholder="text" [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}">
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="filterItems()">Search</button>
+    </form>
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items">
+          <td>{{item.name}}</td>
+          <td>{{item.description}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
