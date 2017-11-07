@@ -5,6 +5,7 @@ import { SignupComponent } from './signup/signup.component';
 import { CrudComponent } from './crud/crud.component';
 import { FilesComponent } from './files/files.component';
 import { HomeComponent } from './home/home.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
 	{ path: 'crud', component: CrudComponent },
@@ -12,7 +13,7 @@ const routes: Routes = [
     { path: 'signup', component: SignupComponent },
     { path: 'files', component: FilesComponent },
     { path: '**', component: LoginComponent },
-    { path: 'home', component: HomeComponent }
+    { path: 'home', component: HomeComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

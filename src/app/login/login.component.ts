@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import 'rxjs/Rx';
 import { BackandService } from '@backand/angular2-sdk';
+import { AuthService } from './../auth/auth.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
@@ -15,11 +16,11 @@ export class LoginComponent implements OnInit {
 
 
 
-    username:string = 'test@angular2.com';
-    password:string = 'angular2';
-    auth_type:string = "N/A";
-    is_auth_error:boolean = false;
-    auth_status:string = null;
+    username: string = 'test@angular2.com';
+    password: string = 'angular2';
+    auth_type: string = "N/A";
+    is_auth_error: boolean = false;
+    auth_status: string = null;
     loggedInUser: string = '';
 
 
@@ -29,18 +30,18 @@ export class LoginComponent implements OnInit {
 
 
 
-    constructor(private backand: BackandService) {
+    constructor(private backand: BackandService, private authService: AuthService) {
         this.backand.user.getUserDetails().then(
             (data: any) => {
                 console.log(data);
-                if (data.data){
+                if (data.data) {
                     this.loggedInUser = data.data.username;
                     this.auth_status = 'OK';
                     this.auth_type = data.data.token_type == 'Anonymous' ? 'Anonymous' : 'Token';
                 }
-                else{
-                   this.auth_status = null; 
-                }                
+                else {
+                    this.auth_status = null;
+                }
             },
             (err: any) => {
                 console.log(err);
@@ -57,6 +58,7 @@ export class LoginComponent implements OnInit {
         this.backand.signin(this.username, this.password)
             .then((data: any) => {
                 console.log(data);
+                this.authService.login({userName:this.username, password:this.password});
                 this.auth_status = 'OK';
                 this.is_auth_error = false;
                 this.loggedInUser = data.data.username;
@@ -71,7 +73,7 @@ export class LoginComponent implements OnInit {
                 console.log(errorMessage)
                 this.auth_status = 'ERROR';
             }
-        );
+            );
     }
 
     public useAnonymousAuth() {
@@ -90,19 +92,18 @@ export class LoginComponent implements OnInit {
 
 
     public changePassword() {
-        if (this.newPassword != this.confirmNewPassword){
+        if (this.newPassword != this.confirmNewPassword) {
             alert('Passwords should match');
             return;
         }
         this.backand.changePassword(this.oldPassword, this.newPassword)
             .then((data: any) => {
-                    alert('Password changed');
-                    this.oldPassword = this.newPassword = this.confirmNewPassword = '';
+                alert('Password changed');
+                this.oldPassword = this.newPassword = this.confirmNewPassword = '';
             },
             (err: any) => {
-                    console.log(err.data.error_description)
+                console.log(err.data.error_description)
             }
-        );
+            );
     }
-
 }

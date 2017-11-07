@@ -11,5 +11,11 @@ nav {
     .navbar-brand {
         color: #fff;
         text-shadow: 1px 1px 1px #000;
+        padding: 0px; /* firefox bug fix */
     }
+    .navbar-brand>img {
+        height: 100%;
+        padding: 7px; /* firefox bug fix */
+        width: auto;
+      }
 }

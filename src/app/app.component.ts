@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 import { BackandService, Response } from '@backand/angular2-sdk';
+import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +10,10 @@ import { BackandService, Response } from '@backand/angular2-sdk';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
+  isLoggedIn$: Observable<boolean>;
   title = 'app works!';
-	constructor(private router: Router, private backand:BackandService) { 
+	constructor(private router: Router, private backand:BackandService, private authService: AuthService) { 
 
   }
   
@@ -20,6 +24,7 @@ export class AppComponent implements OnInit {
       anonymousToken: 'd0157e6f-c09d-40c0-8e97-ec3ea7e692d7',
       runSocket: true
     });
+    this.isLoggedIn$ = this.authService.isLoggedIn;
   }
 	public navigate(url: any) {
 		this.router.navigate([url]);

@@ -1,35 +1,30 @@
 <div class="row">
   <div class="col-md-12">
-    <h1>Login</h1>
-
-    <h2>Authentication</h2>
+    <div class="signin-content">
+      <div class="card">
+        <div class="card-body">
+            <h1>Login</h1>
+            <div class="form-group row">
+              <label for="username" class="col-xs-2 col-form-label">Benutzername:</label>
+              <div class="col-xs-10">
+                <input class="form-control" type="text" [value]="username" (input)="username = $event.target.value" id="username">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="password" class="col-xs-2 col-form-label">Passwort:</label>
+              <div class="col-xs-10">
+                <input class="form-control" type="password" [value]="password" (input)="password = $event.target.value" id="password">
+              </div>
+            </div>
+            <button  type="button" class="btn btn-primary" (click)="getAuthTokenSimple()">Login</button>
+            <button id="login_lost_btn" type="button" class="btn btn-link">Passwort vergessen?</button>
+        </div>
+      </div>
+    </div>
 
     <div>
       <label *ngIf="auth_status == 'OK'"><button type="button" class="btn btn-warning" (click)="signOut()">Sign Out</button>{{loggedInUser}}</label>
     </div>
-
-    <div>
-      <label>Choose authentication type:</label>
-    </div>
-
-    <ul class="list-group">
-      <li class="list-group-item">
-        <div class="form-group row">
-          <label for="username" class="col-xs-2 col-form-label">Username</label>
-          <div class="col-xs-10">
-            <input class="form-control" type="text" [value]="username" (input)="username = $event.target.value" id="username">
-          </div>
-        </div>
-      </li>
-      <li class="list-group-item">
-        <div class="form-group row">
-          <label for="password" class="col-xs-2 col-form-label">Password</label>
-          <div class="col-xs-10">
-            <input class="form-control" type="password" [value]="password" (input)="password = $event.target.value" id="password">
-          </div>
-        </div>
-      </li>
-    </ul>
 
     <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
       <button type="button" class="btn btn-primary" (click)="getAuthTokenSimple()">Token Auth</button>
