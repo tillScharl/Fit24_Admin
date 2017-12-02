@@ -1,76 +1,30 @@
-<div class="row">
-  <div class="col-md-12">
-    <div class="signin-content">
-      <div class="card">
-        <div class="card-body">
-            <h1>Login</h1>
-            <div class="form-group row">
-              <label for="username" class="col-xs-2 col-form-label">Benutzername:</label>
-              <div class="col-xs-10">
-                <input class="form-control" type="text" [value]="username" (input)="username = $event.target.value" id="username">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="password" class="col-xs-2 col-form-label">Passwort:</label>
-              <div class="col-xs-10">
-                <input class="form-control" type="password" [value]="password" (input)="password = $event.target.value" id="password">
-              </div>
-            </div>
-            <button  type="button" class="btn btn-primary" (click)="getAuthTokenSimple()">Login</button>
-            <button id="login_lost_btn" type="button" class="btn btn-link">Passwort vergessen?</button>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <label *ngIf="auth_status == 'OK'"><button type="button" class="btn btn-warning" (click)="signOut()">Sign Out</button>{{loggedInUser}}</label>
-    </div>
-
-    <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-primary" (click)="getAuthTokenSimple()">Token Auth</button>
-      <button type="button" class="btn btn-info" (click)="useAnonymousAuth()">Anonymous Auth</button>
-    </div>
-    <div *ngIf="auth_status">
-      <div class="alert alert-success" role="alert">
-        <label>Using {{auth_type}} authentication</label>
-      </div>
-      <div class="alert alert-danger" role="alert">
-        <label [class.alert]="is_auth_error" [class.alert-danger]="is_auth_error">{{auth_status}}</label>
-      </div>
-    </div>
-
-    <hr/>
-    <h2>Change Password</h2>
-    <ul class="list-group">
-      <li class="list-group-item">
-        <div class="form-group row">
-          <label for="oldPassword" class="col-xs-2 col-form-label">Old Password</label>
-          <div class="col-xs-10">
-            <input class="form-control" type="password" [value]="oldPassword" (input)="oldPassword = $event.target.value" id="oldPassword">
+<div class="container">
+  <div class="row">
+    <div class="Absolute-Center is-Responsive">
+      <div id="logo-container"></div>
+      <div class="col-sm-12 col-md-10 col-md-offset-1">
+        <form action="" id="loginForm" (keyup.enter)="getAuthTokenSimple()">
+          <div class="form-group input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input class="form-control" type="text" [value]="username" (input)="username = $event.target.value" id="username" name='username' placeholder="Benutzername"/>          
           </div>
-        </div>
-      </li>
-      <li class="list-group-item">
-        <div class="form-group row">
-          <label for="newPassword" class="col-xs-2 col-form-label">New Password</label>
-          <div class="col-xs-10">
-            <input class="form-control" type="password" [value]="newPassword" (input)="newPassword = $event.target.value" id="newPassword">
+          <div class="form-group input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <input class="form-control" type="password" [value]="password" (input)="password = $event.target.value" id="password" name='password' placeholder="Passwort" (keyup.enter)="getAuthTokenSimple()"/>     
           </div>
-        </div>
-      </li>
-      <li class="list-group-item">
-        <div class="form-group row">
-          <label for="confirmPassword" class="col-xs-2 col-form-label">Confirm Password</label>
-          <div class="col-xs-10">
-            <input class="form-control" type="password" [value]="confirmNewPassword" (input)="confirmNewPassword = $event.target.value"
-              id="confirmPassword">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> Angemeldet bleiben?
+            </label>
           </div>
-        </div>
-      </li>
-      <li class="list-group-item">
-        <button type="button" class="btn btn-primary" (click)="changePassword()">Change Password</button>
-      </li>
-    </ul>
-
+          <div class="form-group">
+            <button type="button" class="btn btn-primary btn-block" (click)="getAuthTokenSimple()">Login</button>
+          </div>
+          <div class="form-group text-center">
+            <a href="#">Passwort vergessen</a>&nbsp;|&nbsp;<a href="#">Support</a>
+          </div>
+        </form>        
+      </div>  
+    </div>    
   </div>
 </div>

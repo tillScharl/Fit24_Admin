@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import 'rxjs/Rx';
 import { BackandService } from '@backand/angular2-sdk';
 import { AuthService } from './../auth/auth.service';
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
 
 
 
-    username: string = 'test@angular2.com';
+    username: string = 'till.scharl@web.de';
     password: string = 'angular2';
     auth_type: string = "N/A";
     is_auth_error: boolean = false;
@@ -30,7 +31,7 @@ export class LoginComponent implements OnInit {
 
 
 
-    constructor(private backand: BackandService, private authService: AuthService) {
+    constructor(private backand: BackandService, private authService: AuthService, private router: Router) {
         this.backand.user.getUserDetails().then(
             (data: any) => {
                 console.log(data);
@@ -58,12 +59,20 @@ export class LoginComponent implements OnInit {
         this.backand.signin(this.username, this.password)
             .then((data: any) => {
                 console.log(data);
-                this.authService.login({userName:this.username, password:this.password});
+                this.authService.login({
+                    userName: data.data.username,
+                    password: this.password, 
+                    fullName: data.data.fullName, 
+                    lastName: data.data.lastName, 
+                    firstName: data.data.firstName, 
+                    role: data.data.role
+                });
                 this.auth_status = 'OK';
                 this.is_auth_error = false;
                 this.loggedInUser = data.data.username;
                 this.username = '';
                 this.password = '';
+                this.router.navigate(['home']);
             },
             (error: any) => {
                 console.log(error);

@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BackandService } from '@backand/angular2-sdk';
-
 import { AppRoutingModule }  from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -13,6 +12,11 @@ import { CrudComponent } from './crud/crud.component';
 import { FilesComponent } from './files/files.component';
 import { HomeComponent } from './home/home.component';
 import { AuthService } from './auth/auth.service';
+import { ProfileComponent } from './profile/profile.component';
+import { StudioOverviewComponent } from './studio-overview/studio-overview.component';
+import { StudioCoursesComponent } from './studio-courses/studio-courses.component';
+import { NewCourseComponent } from './new-course/new-course.component';
+import { EditCourseComponent } from './edit-course/edit-course.component';
 
 
 @NgModule({
@@ -22,7 +26,12 @@ import { AuthService } from './auth/auth.service';
     SignupComponent,
     CrudComponent,
     FilesComponent,
-    HomeComponent
+    HomeComponent,
+    ProfileComponent,
+    StudioOverviewComponent,
+    StudioCoursesComponent,
+    NewCourseComponent,
+    EditCourseComponent
   ],
   imports: [
     BrowserModule,

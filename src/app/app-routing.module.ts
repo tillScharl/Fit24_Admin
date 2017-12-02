@@ -5,20 +5,22 @@ import { SignupComponent } from './signup/signup.component';
 import { CrudComponent } from './crud/crud.component';
 import { FilesComponent } from './files/files.component';
 import { HomeComponent } from './home/home.component';
+import { StudioCoursesComponent } from './studio-courses/studio-courses.component';
 import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
 	{ path: 'crud', component: CrudComponent },
-    { path: 'login', component: LoginComponent },
-    { path: 'signup', component: SignupComponent },
-    { path: 'files', component: FilesComponent },
-    { path: '**', component: LoginComponent },
-    { path: 'home', component: HomeComponent, canActivate: [AuthGuard] }
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'files', component: FilesComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full'},
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'studio-courses/:studioName/:trainerId', component: StudioCoursesComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: []
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }
