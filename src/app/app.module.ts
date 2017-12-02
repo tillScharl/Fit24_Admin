@@ -17,6 +17,7 @@ import { StudioOverviewComponent } from './studio-overview/studio-overview.compo
 import { StudioCoursesComponent } from './studio-courses/studio-courses.component';
 import { NewCourseComponent } from './new-course/new-course.component';
 import { EditCourseComponent } from './edit-course/edit-course.component';
+import { CourseDetailsComponent } from './course-details/course-details.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { EditCourseComponent } from './edit-course/edit-course.component';
     StudioOverviewComponent,
     StudioCoursesComponent,
     NewCourseComponent,
-    EditCourseComponent
+    EditCourseComponent,
+    CourseDetailsComponent
   ],
   imports: [
     BrowserModule,

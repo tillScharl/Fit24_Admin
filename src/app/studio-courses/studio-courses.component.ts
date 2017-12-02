@@ -5,6 +5,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { BackandService, Response } from '@backand/angular2-sdk';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-studio-courses',
@@ -57,5 +58,7 @@ export class StudioCoursesComponent implements OnInit {
         });
       });
   }
-
+  public showNewCoursePage() {
+    this.router.navigate(['/new-course']);
+  }
 }
