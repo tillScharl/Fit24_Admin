@@ -1,5 +1,5 @@
 {
-  "name": "angular2-example",
+  "name": "fit24-admin",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -12,6 +12,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/animations": "^5.0.5",
     "@angular/common": "^4.4.4",
     "@angular/compiler": "^4.4.4",
     "@angular/core": "^4.4.4",

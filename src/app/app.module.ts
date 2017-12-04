@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DateTimePickerModule } from 'ng-pick-datetime';
 import { BackandService } from '@backand/angular2-sdk';
 import { AppRoutingModule }  from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -39,9 +41,12 @@ import { CourseDetailsComponent } from './course-details/course-details.componen
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    DateTimePickerModule
   ],
   providers: [BackandService, AuthService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }

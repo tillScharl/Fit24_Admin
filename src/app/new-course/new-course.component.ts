@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewCourseComponent implements OnInit {
 
+  moment;
+  de: any;
   constructor() { }
 
   ngOnInit() {
+    this.de = {
+      firstDayOfWeek: 0,
+      dayNames: ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
+      dayNamesShort: ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
+      monthNames: ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "October", "November", "Dezember"],
+      monthNamesShort: ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    };
+    //this.moment = "2017/12/04 00:00";
   }
 
 }
