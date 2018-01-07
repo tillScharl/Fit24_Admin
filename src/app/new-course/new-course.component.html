@@ -1,53 +1,63 @@
 <div class="row">
   <div class="col-md-12">
-    <h1>Kurs Hinzufügen: </h1>
-    <form>
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Kurs Hinzufügen: </h1>
+      </div>
+    </div>
+    <form #newCourseForm="ngForm" (ngSubmit)="newCourse(newCourseForm)">
       <div class="form-group row">
         <label for="inputName" class="col-sm-2 col-form-label">Kursname:</label>
-        <div class="col-sm-10">
-          <input type="textarea" class="form-control" id="inputName" placeholder="z.B. Spinning">
+        <div class="input-group col-sm-10">
+          <input type="textarea" class="form-control" id="inputName" name="inputName" placeholder="z.B. Spinning" ngModel>
         </div>
       </div>
       <div class="form-group row">
         <label for="inputDescription" class="col-sm-2 col-form-label">Beschreibung:</label>
-        <div class="col-sm-10">
-          <input type="textarea" class="form-control" id="inputDescription" placeholder="Als Indoorcycling oder Spinning werden Gruppentrainingsprogramme bezeichnet, die meist als Ausdauersport auf stationären Fahrrädern, den sogenannten Indoorbikes oder Spinbikes mit Musik ausgeführt werden. Das Indoorcycling kam in den 1970er und 80er Jahren in Mode – wesentlich beeinflusst vom Training auf Rollentrainern, der Freien Rolle und dem Ergometer-Training zu Zwecken der Leistungsüberprüfung.">
+        <div class="input-group col-sm-10">
+          <textarea class="form-control" id="inputDescription" name="inputDescription" rows="5" placeholder="Als Indoorcycling oder Spinning werden Gruppentrainingsprogramme bezeichnet, die meist als Ausdauersport auf stationären Fahrrädern, den sogenannten Indoorbikes oder Spinbikes mit Musik ausgeführt werden. Das Indoorcycling kam in den 1970er und 80er Jahren in Mode – wesentlich beeinflusst vom Training auf Rollentrainern, der Freien Rolle und dem Ergometer-Training zu Zwecken der Leistungsüberprüfung." ngModel></textarea>
         </div>
       </div>
       <div class="form-group row">
         <label for="inputLink" class="col-sm-2 col-form-label">Link zu Youtube:</label>
-        <div class="col-sm-10">
-          <input type="textarea" class="form-control" id="inputLink" placeholder="www.youtube.com">
+        <div class="input-group col-sm-10">
+          <input type="textarea" class="form-control" id="inputLink" name="inputLink" placeholder="www.youtube.com" ngModel>
         </div>
       </div>
       <div class="form-group row">
         <label for="inputDuration" class="col-sm-2 col-form-label">Dauer der Einheiten:</label>
-        <div class="col-sm-10">
-          <input type="textarea" class="form-control" id="inputDuration" placeholder="35 min">
+        <div class="input-group col-sm-10">
+          <input type="textarea" class="form-control" id="inputDuration" name="inputDuration" placeholder="35 min" ngModel>
         </div>
       </div>
       <div class="form-group row">
         <label for="inputOverallSeats" class="col-sm-2 col-form-label">Anzahl der verfügbaren Plätze:</label>
-        <div class="col-sm-10">
-          <input type="textarea" class="form-control" id="OverallSeats" placeholder="15">
+        <div class="input-group col-sm-10">
+          <input type="textarea" class="form-control" id="inputOverallSeats" name="inputOverallSeats" placeholder="15" ngModel>
         </div>
       </div>
       <div class="form-group row">
         <label for="inputPrice" class="col-sm-2 col-form-label">Preis:</label>
-        <div class="col-sm-10">
-          <input type="textarea" class="form-control" id="inputPrice" placeholder="14,99 €">
+        <div class="input-group col-sm-10">
+          <input type="textarea" class="form-control" id="inputPrice" name="inputPrice" placeholder="14,99 €" ngModel>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="eventCount" class="col-sm-2 col-form-label">Anzahl der Veranstaltungen:</label>
+        <div class="input-group col-sm-10">
+          <input type="textarea" class="form-control" id="eventCount" name="eventCount" placeholder="7" ngModel>
         </div>
       </div>
       <div class="form-group row">
         <div class="input-control">
           <label for="datePickerStart" class="col-sm-2 col-form-label">Datum und Beginn:</label>
-          <div class="col-sm-10">
-            <owl-date-time [inputId]="'datePickerStart'" [locale]="de"></owl-date-time>
+          <div class="input-group col-sm-10">
+            <owl-date-time class="form-control" [inputId]="'datePicker'" [locale]="de" [(ngModel)]="dates" name="datePicker"></owl-date-time>
           </div>
         </div>
       </div>
       <button type="submit" class="btn btn-primary">Speichern</button>
-      <button type="submit" class="btn btn-primary">Abbrechen</button>
+      <button type="button" class="btn btn-primary">Abbrechen</button>
     </form>
   </div>
 </div>

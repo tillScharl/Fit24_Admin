@@ -1,13 +1,10 @@
 export interface Course {
-    bookedSeats: number;
-    datesId: number;
-    description: string;
     id: number;
+    courseName: string;
+    description: string;
     link: string;
-    name: string;
-    overallSeats: number;
+    overallPlaces: number;
+    bookedPlaces: number;
     price: number;
-    studioId: number;
-    strainerId: number;
-    users: number;
+    studio: number;
 }

@@ -14,6 +14,7 @@ import { CrudComponent } from './crud/crud.component';
 import { FilesComponent } from './files/files.component';
 import { HomeComponent } from './home/home.component';
 import { AuthService } from './auth/auth.service';
+import { StudioService } from './studio.service';
 import { ProfileComponent } from './profile/profile.component';
 import { StudioOverviewComponent } from './studio-overview/studio-overview.component';
 import { StudioCoursesComponent } from './studio-courses/studio-courses.component';
@@ -45,7 +46,7 @@ import { CourseDetailsComponent } from './course-details/course-details.componen
     AppRoutingModule,
     DateTimePickerModule
   ],
-  providers: [BackandService, AuthService],
+  providers: [BackandService, AuthService, StudioService],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

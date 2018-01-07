@@ -6,6 +6,7 @@ import { CrudComponent } from './crud/crud.component';
 import { FilesComponent } from './files/files.component';
 import { HomeComponent } from './home/home.component';
 import { StudioCoursesComponent } from './studio-courses/studio-courses.component';
+import { StudioOverviewComponent } from './studio-overview/studio-overview.component';
 import { AuthGuard } from './auth/auth.guard';
 import { NewCourseComponent } from './new-course/new-course.component';
 
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'new-course', component: NewCourseComponent, canActivate: [AuthGuard] },
+  { path: 'studio-overview', component: StudioOverviewComponent, canActivate: [AuthGuard] },
   { path: 'studio-courses/:studioName/:trainerId', component: StudioCoursesComponent, canActivate: [AuthGuard] }
 ];
 

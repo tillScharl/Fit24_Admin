@@ -20,8 +20,8 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li *ngFor="let studioName of studioNames">
-              <a (click)="navigateToStudio(studioName)">{{studioName}}</a>
+            <li *ngFor="let studio of studios">
+              <a (click)="navigateToStudio(studio)">{{studio.studioName}}</a>
             </li>
           </ul>
         </li>

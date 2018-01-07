@@ -1,41 +1,56 @@
-<div class="row">
-  <div class="col-md-12">
-    <h1>Kurse {{selectedStudioName$ | async}}:</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Meine Kurse in {{selectedStudioName}}:</h1>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Kursname</th>
+          <th scope="col">Plätze</th>
+          <th scope="col">Gebucht</th>
+          <th scope="col">Preis</th>
+          <th scope="col">Ändern</th>
+          <th scope="col">Kurs Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let course of courses">
+          <th scope="row">{{course.courseName}}</th>
+          <td>{{course.overallPlaces}}</td>
+          <td>{{course.bookedPlaces}}</td>
+          <td>{{course.price}}</td>
+          <td>
+            <button type="button" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-pencil"></span>
+            </button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Kursname</th>
-        <th scope="col">Plätze</th>
-        <th scope="col">Gebucht</th>
-        <th scope="col">Preis</th>
-        <th scope="col">Ändern</th>
-        <th scope="col">Kurs Details</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let course of courses">
-        <th scope="row">{{course.name}}</th>
-        <td>{{course.overallSeats}}</td>
-        <td>{{course.bookedSeats}}</td>
-        <td>{{course.price}}</td>
-        <td>
-          <button type="button" class="btn btn-default btn-sm">
-            <span class="glyphicon glyphicon-pencil"></span>
+  <div class="row">
+    <div class="col">
+      <div class="bottom-right">
+        <button type="button" class="btn btn-primary pull-right" (click)="showNewCoursePage()">
+          <span class="glyphicon glyphicon glyphicon-plus"></span>
+          Kurs Hinzufügen
+        </button>
+
+      </div>
+    </div>
+    <div class="col">
+        <div class="bottom-right">
+          <button type="button" class="btn btn-primary" (click)="showCourseOverviewPage()">
+            <span class="glyphicon glyphicon glyphicon-home"></span>
+            Studio Überblick
           </button>
-        </td>
-        <td>
-          <button type="button" class="btn btn-default btn-sm">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="bottom-right">
-    <button type="button" class="btn btn-primary pull-right" (click)="showNewCoursePage()">
-      <span class="glyphicon glyphicon glyphicon-plus"></span>
-       Kurs Hinzufügen
-    </button>
+        </div>
+    </div>
   </div>
 </div>
