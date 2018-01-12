@@ -40,7 +40,7 @@ export class StudioCoursesComponent implements OnInit {
       console.log(response.data.courses);
     });
   }
-  
+
   public showNewCoursePage() {
     this.router.navigate(['/new-course']);
   }

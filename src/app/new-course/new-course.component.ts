@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, ValidatorFn, AbstractControl } from '@angular/forms';
 import { BackandService, Response } from '@backand/angular2-sdk';
 import { StudioService } from '../studio.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-new-course',
@@ -14,7 +16,8 @@ export class NewCourseComponent implements OnInit {
   de: any;
   constructor(
     private backand: BackandService,
-    private studioService: StudioService
+    private studioService: StudioService,
+    private router: Router
   ) { 
 
   }
@@ -41,10 +44,27 @@ export class NewCourseComponent implements OnInit {
       "overallPlaces": form.value.inputOverallSeats,
       "bookedPlaces": 0,
       "price": form.value.inputPrice,
-      "studio": this.studioService.getCurrentStudio()
+      "studio": this.studioService.getCurrentStudio(),
+      "eventCount":form.value.eventCount,
+      "eventDuration": form.value.inputDuration
     }).then(response => {
-      console.log(response);
+      console.log(response.data.__metadata.id);
+      for(let i = 0; i < form.value.eventCount; i++) {
+        let tempDate = new Date(form.value.datePicker);
+        tempDate.setDate(tempDate.getDate() + i * 7);
+        this.backand.object.create("dates",  
+        {
+          "startingTime": new Date(tempDate).toISOString(),
+          "course": response.data.__metadata.id,
+        }).then(newResponse => {
+          console.log(newResponse);
+        });
+      }
+      this.showStudioCoursesPage();
     });
   }
 
+  public showStudioCoursesPage() {
+    this.router.navigate(['/studio-courses']);
+  }
 }

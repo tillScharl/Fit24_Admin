@@ -4,6 +4,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CustomFormsModule } from 'ng2-validation'
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import { BackandService } from '@backand/angular2-sdk';
 import { AppRoutingModule }  from './app-routing.module';
@@ -44,7 +45,8 @@ import { CourseDetailsComponent } from './course-details/course-details.componen
     HttpModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    DateTimePickerModule
+    DateTimePickerModule,
+    CustomFormsModule
   ],
   providers: [BackandService, AuthService, StudioService],
   bootstrap: [AppComponent],

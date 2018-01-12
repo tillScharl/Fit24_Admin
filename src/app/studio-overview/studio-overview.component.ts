@@ -19,6 +19,6 @@ export class StudioOverviewComponent implements OnInit {
   }
 
   public showStudioCoursesPage() {
-    this.router.navigate(['/studio-courses/Amberg/1']);
+    this.router.navigate(['/studio-courses']);
   }
 }

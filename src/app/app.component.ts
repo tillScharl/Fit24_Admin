@@ -110,7 +110,7 @@ export class AppComponent implements OnInit {
   public navigateToStudio(studio: Studio) {
     this.studioService.setCurrentStudio(studio);
     this.router.navigateByUrl('/files', { skipLocationChange: true });
-    this.router.navigate(['/studio-courses', studio.studioName, studio.id]);
+    this.router.navigate(['/studio-courses']);
   }
 }
 
