@@ -10,7 +10,7 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="#">
-        <img src="/src/assets/logo_150.png" class="img-circle">
+        <img src="/src/assets/logo_150.png" class="img-responsive"> 
       </a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -29,7 +29,7 @@
           <a class="nav-link" routerLink="/signup" routerLinkActive="active">Profil</a>
         </li>
         <li>
-          <a class="nav-link" routerLink="/crud" routerLinkActive="active">Logout</a>
+          <a class="nav-link" (click)="logout()" routerLink="" routerLinkActive="active">Logout</a>
         </li>
       </ul>
     </div>

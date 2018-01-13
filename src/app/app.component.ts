@@ -112,5 +112,12 @@ export class AppComponent implements OnInit {
     this.router.navigateByUrl('/files', { skipLocationChange: true });
     this.router.navigate(['/studio-courses']);
   }
+
+  logout() {
+    this.backand.signout().then(data => {
+      console.log(data);
+      this.authService.logout();
+    });
+  }
 }
 

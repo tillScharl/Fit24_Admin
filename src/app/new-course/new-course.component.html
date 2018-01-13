@@ -10,14 +10,25 @@
         <div class="form-group row">
           <label for="inputName" class="col-sm-2 col-form-label">Kursname:</label>
           <div class="input-group col-sm-10">
-            <input type="textarea" class="form-control" id="inputName" name="inputName" placeholder="z.B. Spinning" ngModel required>
+            <input type="textarea" class="form-control" id="inputName" name="inputName" placeholder="z.B. Spinning" #inputName="ngModel"
+              ngModel required>
+            <div *ngIf="inputName.errors && (inputName.dirty || inputName.touched)" class="alert alert-danger">
+              <div [hidden]="!inputName.errors.required">
+                Feld darf nicht leer sein!
+              </div>
+            </div>
           </div>
         </div>
         <div class="form-group row">
           <label for="inputDescription" class="col-sm-2 col-form-label">Beschreibung:</label>
           <div class="input-group col-sm-10">
             <textarea class="form-control" id="inputDescription" name="inputDescription" rows="5" placeholder="Als Indoorcycling oder Spinning werden Gruppentrainingsprogramme bezeichnet, die meist als Ausdauersport auf stationären Fahrrädern, den sogenannten Indoorbikes oder Spinbikes mit Musik ausgeführt werden. Das Indoorcycling kam in den 1970er und 80er Jahren in Mode – wesentlich beeinflusst vom Training auf Rollentrainern, der Freien Rolle und dem Ergometer-Training zu Zwecken der Leistungsüberprüfung."
-              ngModel required></textarea>
+              #inputDescription="ngModel" ngModel required></textarea>
+            <div *ngIf="inputDescription.errors && (inputDescription.dirty || inputDescription.touched)" class="alert alert-danger">
+              <div [hidden]="!inputDescription.errors.required">
+                Feld darf nicht leer sein!
+              </div>
+            </div>
           </div>
         </div>
         <div class="form-group row">
@@ -29,28 +40,61 @@
         <div class="form-group row">
           <label for="inputDuration" class="col-sm-2 col-form-label">Dauer der Einheiten:</label>
           <div class="input-group col-sm-10">
-            <input type="number" min="1" max="120" step="1" pattern="(?:\b|-)([1-9]{1,2}[0]?|120)\b" class="form-control" id="inputDuration"
-              name="inputDuration" placeholder="35 min" ngModel required>
+            <input type="number" min="1" max="120" step="1" [range]="[1, 120]" class="form-control" id="inputDuration" name="inputDuration"
+              placeholder="35 min" #inputDuration="ngModel" ngModel required>
+            <div *ngIf="inputDuration.errors && (inputDuration.dirty || inputDuration.touched)" class="alert alert-danger">
+              <div [hidden]="!inputDuration.errors.required">
+                Feld darf nicht leer sein!
+              </div>
+              <div [hidden]="!inputDuration.errors.range">
+                Zahl muss zwischen 1 und 120 liegen!
+              </div>
+            </div>
           </div>
         </div>
         <div class="form-group row">
           <label for="inputOverallSeats" class="col-sm-2 col-form-label">Anzahl der verfügbaren Plätze:</label>
           <div class="input-group col-sm-10">
-            <input type="number" min="1" max="40" step="1" pattern="(?:\b|-)([1-9]{1,2}[0]?|40)\b" class="form-control" id="inputOverallSeats"
-              name="inputOverallSeats" placeholder="15" ngModel required>
+            <input type="number" min="1" max="40" step="1" [range]="[1, 40]" class="form-control" id="inputOverallSeats" name="inputOverallSeats"
+              placeholder="15" #inputOverallSeats="ngModel" ngModel required>
+            <div *ngIf="inputOverallSeats.errors && (inputOverallSeats.dirty || inputOverallSeats.touched)" class="alert alert-danger">
+              <div [hidden]="!inputOverallSeats.errors.required">
+                Feld darf nicht leer sein!
+              </div>
+              <div [hidden]="!inputOverallSeats.errors.range">
+                Zahl muss zwischen 1 und 40 liegen!
+              </div>
+            </div>
           </div>
         </div>
         <div class="form-group row">
           <label for="inputPrice" class="col-sm-2 col-form-label">Preis:</label>
           <div class="input-group col-sm-10">
-            <input type="number" min="0" max="250" step="0.01" class="form-control" id="inputPrice" name="inputPrice" placeholder="14,99 €" [range]="[0, 250]" ngModel required>
+            <input type="number" min="1" max="250" step="0.01" class="form-control" id="inputPrice" name="inputPrice" placeholder="14,99 €"
+              [range]="[1, 250]" #inputPrice="ngModel" ngModel required>
+            <div *ngIf="inputPrice.errors && (inputPrice.dirty || inputPrice.touched)" class="alert alert-danger">
+              <div [hidden]="!inputPrice.errors.required">
+                Feld darf nicht leer sein!
+              </div>
+              <div [hidden]="!inputPrice.errors.range">
+                Preis muss zwischen 1 € und 250 € liegen!
+              </div>
+            </div>
           </div>
         </div>
         <div class="form-group row">
           <label for="eventCount" class="col-sm-2 col-form-label">Anzahl der Veranstaltungen:</label>
           <div class="input-group col-sm-10">
-            <input type="number" min="1" max="30" step="1" pattern="(?:\b|-)([1-9]{1,2}[0]?|30)\b" class="form-control" id="eventCount"
-              name="eventCount" placeholder="7" ngModel required>
+            <input type="number" min="1" max="30" step="1" [range]="[1, 30]" class="form-control" id="eventCount" name="eventCount" placeholder="7"
+              #eventCount="ngModel" ngModel required>
+            <div *ngIf="eventCount.errors && (eventCount.dirty || eventCount.touched)" class="alert alert-danger">
+              <div [hidden]="!eventCount.errors.required">
+                Feld darf nicht leer sein!
+              </div>
+              <div [hidden]="!eventCount.errors.range">
+                Zahl muss zwischen 1 und 30 liegen!
+              </div>
+            </div>
           </div>
         </div>
         <div class="form-group row">

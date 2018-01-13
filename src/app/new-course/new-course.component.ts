@@ -11,9 +11,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./new-course.component.scss']
 })
 export class NewCourseComponent implements OnInit {
+  
   dates;
   moment;
   de: any;
+
   constructor(
     private backand: BackandService,
     private studioService: StudioService,
@@ -35,7 +37,7 @@ export class NewCourseComponent implements OnInit {
 
 
   newCourse(form:NgForm) {
-    console.log(form.value);
+    console.log(form);
     this.backand.object.create('courses', 
     {
       "courseName": form.value.inputName,

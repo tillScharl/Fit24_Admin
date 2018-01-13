@@ -17,6 +17,7 @@ nav {
         height: 100%;
         padding: 7px; /* firefox bug fix */
         width: auto;
+        border-radius: 10px
     }
     .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
         background-color: #00277f;

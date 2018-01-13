@@ -39,6 +39,15 @@ export class LoginComponent implements OnInit {
                     this.loggedInUser = data.data.username;
                     this.auth_status = 'OK';
                     this.auth_type = data.data.token_type == 'Anonymous' ? 'Anonymous' : 'Token';
+                    this.authService.login({
+                        userName: data.data.username,
+                        password: this.password, 
+                        fullName: data.data.fullName, 
+                        lastName: data.data.lastName, 
+                        firstName: data.data.firstName, 
+                        role: data.data.role
+                    });
+                    this.router.navigate(['home']);
                 }
                 else {
                     this.auth_status = null;
